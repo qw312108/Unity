@@ -30,7 +30,15 @@ public class P_Move : MonoBehaviour
         x = Input.GetAxis("Horizontal");//默认x轴方向 AD←→键控制
 
         //面向左
-
+        if (x > 0)
+        {
+            rigidbody2D.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        //面向右
+        if (x < 0)
+        {
+            rigidbody2D.transform.eulerAngles = new Vector3(0, 180, 0);
+        }
 
         Vector3 movement = new Vector3(x, y, z: 0);
         rigidbody2D.transform.position += movement * p_Speed * Time.deltaTime;//人物移动
